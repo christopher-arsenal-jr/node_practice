@@ -56,11 +56,19 @@ const deleteUser = (req, res) => {
   });
 };
 
-app.get('/', getAllTours);
-app.get('/:id', getTour);
+app.use('/tours',tourRouter);
+app.use('/users',userRouter);
 
-app.route('/users').get(getAllUsers).post(createUser);
-app.route('/users/:id').get(getUser).patch(updateUser).delete(deleteUser);
+const tourRouter = express.Router();
+const userRouter = express.Router();
+
+
+tourRouter.get('/', getAllTours);
+tourRouter.get('/:id', getTour);
+
+userRouter.route('/users').get(getAllUsers).post(createUser);
+userRouter.route('/users/:id').get(getUser).patch(updateUser).delete(deleteUser);
+
 app.listen(port, () => {
   console.log(`App is listening to ${port}`);
 });
