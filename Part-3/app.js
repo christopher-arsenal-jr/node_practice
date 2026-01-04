@@ -13,20 +13,54 @@ const getAllTours = (req, res) => {
   });
 };
 
-const getTour = (req,res)=>{
-    const id = req.params.id;
-    console.log(id);
-    res.status(200).json({
-        status:'success',
-        data:{}
-    });
-}
+const getTour = (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  res.status(200).json({
+    status: 'success',
+    data: {},
+  });
+};
 
+const getAllUsers = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet implemented',
+  });
+};
 
+const createUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet implemented',
+  });
+};
 
-app.get('/',getAllTours);
-app.get('/:id',getTour);
+const getUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet implemented',
+  });
+};
 
+const updateUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet implemented',
+  });
+};
+const deleteUser = (req, res) => {
+  res.status(500).json({
+    status: 'error',
+    message: 'This route is not yet implemented',
+  });
+};
+
+app.get('/', getAllTours);
+app.get('/:id', getTour);
+
+app.route('/users').get(getAllUsers).post(createUser);
+app.route('/users/:id').get(getUser).patch(updateUser).delete(deleteUser);
 app.listen(port, () => {
   console.log(`App is listening to ${port}`);
 });
